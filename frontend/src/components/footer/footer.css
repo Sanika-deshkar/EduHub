@@ -1,0 +1,67 @@
+.footer {
+  background: linear-gradient(135deg, #0C2C55, #081d39);
+  color: #EDEDCE;
+  padding: 50px 10% 20px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+  text-align: center;
+}
+
+/* Headings */
+.footer-brand h3,
+.footer-team h4 {
+  color: #629FAD;
+  margin-bottom: 12px;
+}
+
+/* Brand text */
+.footer-brand p {
+  font-size: 14px;
+  color: #EDEDCE;
+}
+
+/* Team list */
+.footer-team ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-team li {
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: #EDEDCE;
+}
+
+.footer-section h3,
+.footer-section h4 {
+  margin-bottom: 15px;
+  color: #629FAD;
+}
+
+.footer-section p,
+.footer-section li {
+  font-size: 14px;
+  color: #EDEDCE;
+  margin-bottom: 8px;
+  list-style: none;
+}
+
+.footer-section li:hover {
+  color: #629FAD;
+  cursor: pointer;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 15px;
+  border-top: 1px solid #0C2C55;
+  font-size: 13px;
+  color: #EDEDCE;
+}
