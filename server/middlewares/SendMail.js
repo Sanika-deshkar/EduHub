@@ -1,19 +1,31 @@
-import {createTransport} from 'nodemailer'
+// Sends email via Brevo's HTTP API (https://api.brevo.com) instead of SMTP,
+// because many cloud hosts (e.g. Render) block outbound SMTP ports.
+const BREVO_URL = "https://api.brevo.com/v3/smtp/email";
 
-const sendMail=async(email,subject,data)=>{
-    const transport = createTransport({
-        host:"smtp.gmail.com",
-        port:587,
-        secure:false,
-        requireTLS:true,
-        auth:{
-            user:process.env.Gmail,
-            pass:process.env.Password
-        },
-        connectionTimeout:10000,
-        greetingTimeout:10000,
-    });
-    const html = `<!DOCTYPE html>
+const sendViaBrevo = async ({ to, subject, html }) => {
+  const res = await fetch(BREVO_URL, {
+    method: "POST",
+    headers: {
+      "api-key": process.env.BREVO_API_KEY,
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({
+      sender: { name: "EduHub", email: process.env.Gmail },
+      to: [{ email: to }],
+      subject,
+      htmlContent: html,
+    }),
+  });
+
+  if (!res.ok) {
+    const detail = await res.text();
+    throw new Error(`Email failed (${res.status}): ${detail}`);
+  }
+};
+
+const sendMail = async (email, subject, data) => {
+  const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -54,34 +66,17 @@ const sendMail=async(email,subject,data)=>{
     <div class="container">
         <h1>OTP Verification</h1>
         <p>Hello ${data.name} your (One-Time Password) for your account verification is.</p>
-        <p class="otp">${data.otp}</p> 
+        <p class="otp">${data.otp}</p>
     </div>
 </body>
 </html>
 `;
-    await transport.sendMail({
-        from:process.env.Gmail,
-        to:email,
-        subject,
-        html
-    })
+  await sendViaBrevo({ to: email, subject, html });
 };
 
 export default sendMail;
 
 export const sendForgotMail = async (subject, data) => {
-  const transport = createTransport({
-    host: "smtp.gmail.com",
-    port: 587,
-    secure: false,
-    requireTLS: true,
-    auth: {
-      user: process.env.Gmail,
-      pass: process.env.Password,
-    },
-    connectionTimeout: 10000,
-    greetingTimeout: 10000,
-  });
   const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -146,10 +141,5 @@ export const sendForgotMail = async (subject, data) => {
 </html>
 `;
 
-  await transport.sendMail({
-    from: process.env.Gmail,
-    to: data.email,
-    subject,
-    html,
-  });
+  await sendViaBrevo({ to: data.email, subject, html });
 };
