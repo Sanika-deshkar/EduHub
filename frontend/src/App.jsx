@@ -11,7 +11,7 @@ import Loading from "./components/loading/Loading";
 import Home from "./pages/Home/Home";
 import About from "./pages/about/About";
 import Courses from "./pages/courses/Courses";
-import CourseDescription from "./pages/coursedescription/CourseDescription";
+import CourseDescription from "./pages/coursedescription/courseDescription";
 import CourseStudy from "./pages/coursestudy/CourseStudy";
 import Lecture from "./pages/lectures/Lecture";
 import Dashboard from "./pages/dashboard/Dashboard";
@@ -28,7 +28,7 @@ import ResetPassword from "./pages/auth/ResetPassword";
 import PaymentSuccess from "./pages/paymentsuccess/PaymentSuccess";
 
 /* Admin Pages */
-import AdminDashboard from "./admin/dashboard/AdminDasboard";
+import AdminDashboard from "./admin/dashboard/AdminDasboard.jsx";
 import AdminCourses from "./admin/courses/AdminCourses";
 import AdminUsers from "./admin/users/AdminUsers";
 
