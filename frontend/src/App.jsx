@@ -95,7 +95,7 @@ const App = () => {
 
         {/* ================= ADMIN ROUTES ================= */}
         {/* ADMIN ROUTES */}
-<Route path="/admin" element={isAuth ? <Layout /> : <Login />}>
+<Route path="/admin" element={isAuth && user?.role === "admin" ? <Layout /> : <Login />}>
   <Route path="dashboard" element={<AdminDashboard user={user} />} />
   <Route path="course" element={<AdminCourses user={user} />} />
   <Route path="users" element={<AdminUsers user={user} />} />
