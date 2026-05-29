@@ -39,34 +39,13 @@ export const UserContextProvider = ({ children }) => {
       const { data } = await api.post("/api/user/register", { name, email, password });
 
       toast.success(data.message);
-      localStorage.setItem("activationToken", data.activationToken);
       setBtnLoading(false);
-      navigate("/verify");
+      navigate("/login");
     } catch (error) {
       setBtnLoading(false);
       toast.error(error.response?.data?.message || "Registration Failed");
     }
   }
-
-  async function verifyOtp(otp, navigate) {
-  setBtnLoading(true);
-  const activationToken = localStorage.getItem("activationToken");
-  try {
-    
-    const { data } = await api.post("/api/user/verify", {
-      otp,
-      activationToken,
-    });
-
-    toast.success(data.message);
-    setBtnLoading(false);
-    navigate("/login"); 
-    localStorage.clear(); 
-  } catch (error) {
-    setBtnLoading(false);
-    toast.error(error.response?.data?.message || "Verification Failed");
-  }
-}
 
   async function fetchUser() {
   try {
@@ -97,7 +76,6 @@ export const UserContextProvider = ({ children }) => {
         btnLoading,
         loading,
         registerUser,
-        verifyOtp,
         fetchUser,
       }}
     >
