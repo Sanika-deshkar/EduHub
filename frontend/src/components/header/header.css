@@ -1,43 +1,82 @@
-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background: linear-gradient(135deg, #0C2C55, #081d39);
-    color: azure;
-    box-shadow: 0px 2px 4px r#0C2C55;
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  height: 68px;
+  background: rgba(12, 44, 85, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.25);
+}
 
-    .logo{
-        font-size: 30px;
-        font-weight: 500;
-        color: rgb(0, 225, 255);
+.logo {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  background: linear-gradient(90deg, #fff 30%, #00b4d8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 
-        @media(max-width:768px) {
-            font-size: 18px;
-        }
-    }
+.link {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
 
-    .link{
-        display: flex;
-        gap: 2rem;
+.link a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.22s ease;
+  position: relative;
+  padding-bottom: 2px;
+}
 
-        @media(max-width:768px) {
-            gap: 0.5rem;
-        }
+.link a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #00b4d8;
+  border-radius: 2px;
+  transition: width 0.25s ease;
+}
 
-        a{
-            text-decoration: none;
-            color:rgb(0, 225, 255);
-            transition: .3s;
-            font-size: 20px;
+.link a:hover {
+  color: #fff;
+  text-decoration: none;
+}
 
-        &:hover{
-            color: aqua;
-           text-decoration: underline;
-        }
+.link a:hover::after {
+  width: 100%;
+}
 
-            
-        }
+@media (max-width: 768px) {
+  header {
+    padding: 0 18px;
+    height: 58px;
+  }
 
-    }
+  .logo {
+    font-size: 18px;
+  }
+
+  .link {
+    gap: 1rem;
+  }
+
+  .link a {
+    font-size: 13px;
+  }
 }

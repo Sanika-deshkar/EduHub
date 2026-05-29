@@ -1,24 +1,71 @@
-body{
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --primary: #0C2C55;
+  --primary-light: #1a4a80;
+  --accent: #00b4d8;
+  --accent-hover: #0096c7;
+  --bg-light: #f0f4f8;
+  --bg-white: #ffffff;
+  --text-dark: #0f172a;
+  --text-mid: #334155;
+  --text-light: #64748b;
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --shadow-sm: 0 2px 8px rgba(12, 44, 85, 0.08);
+  --shadow-md: 0 8px 24px rgba(12, 44, 85, 0.14);
+  --shadow-lg: 0 20px 48px rgba(12, 44, 85, 0.2);
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  -webkit-font-smoothing: antialiased;
 }
-.common-btn{
-  background-color: #0C2C55;
-  color: aliceblue;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  font-size: 18px;
-  cursor: pointer;
-  transition: background-color .3s ease;
-  margin-top: 10px;
 
-  &:hover{
-    background-color: #0b1f3a;
-  }
-  @media (max-width:768px ) {
-    font-size: 16px;
+.common-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  color: #fff;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+  transition: var(--transition);
+  box-shadow: 0 4px 14px rgba(12, 44, 85, 0.35);
+  margin-top: 10px;
+  text-transform: none;
+}
+
+.common-btn:hover {
+  background: linear-gradient(135deg, var(--accent-hover), var(--accent));
+  box-shadow: 0 6px 20px rgba(0, 180, 216, 0.45);
+  transform: translateY(-2px);
+}
+
+.common-btn:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .common-btn {
+    font-size: 14px;
+    padding: 10px 22px;
   }
 }

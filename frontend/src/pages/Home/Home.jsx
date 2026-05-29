@@ -9,11 +9,11 @@ const Home = () => {
     <div>
         <div className="home">
             <div className="home-content">
-                <h1>Welcome to EduHub!</h1>
-                <h2>An E-learning Platform</h2>
-                <br/>
-                <p>Learn, grow, Excel</p>
-                <button onClick={()=>{navigate("/courses")}} className='common-btn'>Get Started!</button>
+                <div className="home-badge">E-Learning Platform</div>
+                <h1>Welcome to <span>EduHub!</span></h1>
+                <h2>Unlock your potential, one course at a time.</h2>
+                <p>Learn from expert instructors, grow your skills, and excel in your career — all at your own pace.</p>
+                <button onClick={()=>{navigate("/courses")}} className='common-btn'>Get Started</button>
             </div>
         </div>
         <Testimonials />
