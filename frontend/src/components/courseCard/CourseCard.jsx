@@ -59,58 +59,62 @@ const CourseCard = ({ course }) => {
 
   return (
     <div className="course-card">
-      <img src={`${server}/${course.image}`} alt="" className="course-image" />
-      <h3>{course.title}</h3>
-      <p>Instructor- {course.createdBy}</p>
-      <p>Duration- {course.duration} weeks</p>
-      <p>Price- ₹{course.price}</p>
+      <div className="course-image-wrap">
+        <img src={`${server}/${course.image}`} alt={course.title} className="course-image" />
+        <span className="course-price-tag">₹{course.price}</span>
+      </div>
 
-      {isAuth ? (
-        <>
-          {user && user.role !== "admin" ? (
+      <div className="course-card-body">
+        <h3>{course.title}</h3>
+
+        <div className="course-meta">
+          <p><span>Instructor</span>{course.createdBy}</p>
+          <p><span>Duration</span>{course.duration} weeks</p>
+        </div>
+
+        <div className="course-actions">
+          {isAuth ? (
             <>
-              {user.subscription.includes(course._id) ? (
+              {user && user.role !== "admin" ? (
+                <>
+                  {user.subscription.includes(course._id) ? (
+                    <button
+                      onClick={() => navigate(`/course/study/${course._id}`)}
+                      className="common-btn"
+                    >
+                      Study
+                    </button>
+                  ) : (
+                    <button onClick={buyCourseHandler} className="common-btn">
+                      Get Started
+                    </button>
+                  )}
+                </>
+              ) : (
                 <button
                   onClick={() => navigate(`/course/study/${course._id}`)}
                   className="common-btn"
                 >
                   Study
                 </button>
-              ) : (
-                <button
-                  onClick={buyCourseHandler}
-                  className="common-btn"
-                >
-                  Get Started
-                </button>
               )}
             </>
           ) : (
-            <button
-              onClick={() => navigate(`/course/study/${course._id}`)}
-              className="common-btn"
-            >
-              Study
+            <button onClick={() => navigate("/login")} className="common-btn">
+              Get Started
             </button>
           )}
-        </>
-      ) : (
-        <button onClick={() => navigate("/login")} className="common-btn">
-          Get Started
-        </button>
-      )}
 
-      <br />
-
-      {user && user.role === "admin" && (
-        <button
-          onClick={() => deleteHandler(course._id)}
-          className="common-btn"
-          style={{ background: "red" }}
-        >
-          Delete
-        </button>
-      )}
+          {user && user.role === "admin" && (
+            <button
+              onClick={() => deleteHandler(course._id)}
+              className="common-btn course-delete-btn"
+            >
+              Delete
+            </button>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
