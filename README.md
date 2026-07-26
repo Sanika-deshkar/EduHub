@@ -1,10 +1,14 @@
 # EduHub — E-Learning Platform
 
-A full-stack e-learning web application where students can browse courses, enroll, and learn through video lectures. Includes an admin panel for managing courses and users.
+A full-stack e-learning web application where students can browse courses, enroll, and learn through video lectures. The platform includes secure authentication, email verification, course enrollment, video streaming, and an admin dashboard for managing courses, users, and lectures.
+
+## 🌐 Live Demo
+
+**Frontend:** https://edu-hub-zeta.vercel.app/
 
 ---
 
-## Screenshots
+## 📸 Screenshots
 
 | Home | Courses | Login | Admin |
 |------|---------|-------|-------|
@@ -12,68 +16,81 @@ A full-stack e-learning web application where students can browse courses, enrol
 
 ---
 
-## Features
+## ✨ Features
 
-- Browse and search courses
-- User registration with email OTP verification
-- JWT-based authentication
-- Course enrollment & payment integration
+- Browse and search available courses
+- User registration with Email OTP verification
+- Secure JWT-based authentication
+- Course enrollment
+- Payment integration
 - Video lecture streaming
-- Forgot password / reset via email
-- Admin dashboard — manage courses, users, and lectures
+- Forgot password & password reset via email
+- Responsive user interface
+- Admin dashboard for:
+  - Managing courses
+  - Managing users
+  - Managing lectures
 
 ---
 
-## Tech Stack
+## 🛠 Tech Stack
 
 | Layer | Technology |
-|-------|-----------|
+|-------|------------|
 | Frontend | React.js, Vite, React Router |
 | Backend | Node.js, Express.js |
-| Database | MongoDB Atlas + Mongoose |
-| Auth | JWT, bcrypt |
-| Email | Nodemailer (Gmail) |
-| File Uploads | Multer |
+| Database | MongoDB Atlas, Mongoose |
+| Authentication | JWT, bcrypt |
+| Email Service | Nodemailer (Gmail) |
+| File Upload | Multer |
 
 ---
 
-## Project Structure
+## 📂 Project Structure
 
-```
+```text
 E-learningWeb/
-├── frontend/       # React + Vite app
-└── server/         # Node.js + Express API
+├── frontend/       # React + Vite application
+└── server/         # Node.js + Express REST API
 ```
 
 ---
 
-## Local Setup
+## 🚀 Local Setup
 
 ### Prerequisites
-- Node.js v18+
+
+- Node.js v18 or above
 - MongoDB Atlas account
 
-### Backend
+### 1. Clone the Repository
 
 ```bash
-cd E-learningWeb/server
+git clone <repository-url>
+cd E-learningWeb
+```
+
+### 2. Backend Setup
+
+```bash
+cd server
 npm install
-cp .env.example .env   # fill in your values
+cp .env.example .env
 npm run dev
 ```
 
-### Frontend
+### 3. Frontend Setup
 
 ```bash
-cd E-learningWeb/frontend
+cd ../frontend
 npm install
-cp .env.example .env   # fill in your values
+cp .env.example .env
 npm run dev
 ```
 
 ---
 
-## Environment Variables
+## 🔑 Environment Variables
 
 ### Backend (`server/.env`)
 
@@ -83,29 +100,54 @@ npm run dev
 | `Jwt_Sec` | JWT signing secret |
 | `Activation_Secret` | Email activation token secret |
 | `Forgot_Secret` | Forgot password token secret |
-| `Gmail` | Gmail address for sending emails |
-| `Password` | Gmail app password |
-| `frontendurl` | Deployed frontend URL (for CORS) |
+| `Gmail` | Gmail account used for sending emails |
+| `Password` | Gmail App Password |
+| `frontendurl` | Frontend deployment URL for CORS |
 
 ### Frontend (`frontend/.env`)
 
 | Variable | Description |
 |----------|-------------|
-| `VITE_API_URL` | Deployed backend URL |
+| `VITE_API_URL` | Backend deployment URL |
 
 ---
 
-## Deployment
+## 🌍 Deployment
 
-- **Frontend** → [Vercel](https://vercel.com) — set `VITE_API_URL` to your Render backend URL
-- **Backend** → [Render](https://render.com) — set all env variables from the table above
+### Frontend
+
+- **Platform:** Vercel
+- **Live URL:** https://edu-hub-zeta.vercel.app/
+
+### Backend
+
+- **Platform:** Render
+- Configure all environment variables listed above before deployment.
 
 ---
 
-## Team
+## 👥 Team
 
 | Name | Role |
 |------|------|
-| Sanika Deshkar | Full Stack Developer · [GitHub](https://github.com/Sanika-deshkar) · [LinkedIn](https://www.linkedin.com/in/sanika-deshkar/) |
-| Anushka Patil | Developer |
-| Samruddhi Raut | Developer |
+| **Sanika Deshkar** | Full Stack Developer • GitHub: https://github.com/Sanika-deshkar • LinkedIn: https://www.linkedin.com/in/sanika-deshkar/ |
+| **Anushka Patil** | Developer |
+| **Samruddhi Raut** | Developer |
+
+---
+
+## 📌 Future Enhancements
+
+- Course progress tracking
+- Student certificates
+- Reviews and ratings
+- Wishlist feature
+- Instructor dashboard
+- Analytics and reporting
+- Multiple payment gateways
+
+---
+
+## 📄 License
+
+This project is developed for educational purposes.
